@@ -1,5 +1,5 @@
 const roomModel = require('../models/room.model')
-
+// room controller
 class Room {
     static addRoom = async (req, res) => {
         try {
