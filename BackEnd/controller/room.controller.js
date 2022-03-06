@@ -1,10 +1,16 @@
 const roomModel = require('../models/room.model')
+const upload = require('../middleware/fileUpload')
 // room controller
 class Room {
     static addRoom = async (req, res) => {
         try {
+            console.log('file: ', req.files);
+            console.log('body: ', req.body);
+            console.log('path: ', req.imgPath);
+            console.log('Image Name: ', req.imgName);
             const roomOb = {
                 ...req.body,
+                images: {img: {name: req.imgName, path: req.imgPath}},
                 owner: req.user._id,
                 gender: req.user.gender
             }
@@ -13,7 +19,7 @@ class Room {
             res.status(201).send({
                 apiStatus: true,
                 message: 'Room Added Succesfully',
-                data: room
+                data: roomOb
             })
         } catch (error) {
             res.status(500).send({

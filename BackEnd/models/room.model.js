@@ -23,8 +23,14 @@ const roomSchema = mongoose.Schema({
     images: [
         {
             img: {
-                type: String,
-                trim: true
+                name: {
+                    type: String,
+                    trim: true
+                },
+                path: {
+                    type: String,
+                    trim: true
+                }
             }
         }
     ],
