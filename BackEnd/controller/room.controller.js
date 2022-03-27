@@ -4,13 +4,17 @@ const upload = require('../middleware/fileUpload')
 class Room {
     static addRoom = async (req, res) => {
         try {
-            console.log('file: ', req.files);
-            console.log('body: ', req.body);
-            console.log('path: ', req.imgPath);
-            console.log('Image Name: ', req.imgName);
+            let images = []
+            req.files.forEach(pic => {
+                images.push({img: pic.path})
+            });
+            console.log('file: ', images);
+            // console.log('body: ', req.body);
+            // console.log('path: ', req.imgPath);
+            // console.log('Image Name: ', req.imgName);
             const roomOb = {
                 ...req.body,
-                images: {img: {name: req.imgName, path: req.imgPath}},
+                images,
                 owner: req.user._id,
                 gender: req.user.gender
             }

@@ -8,7 +8,7 @@ router.post('/readRoom', roomController.readRoom)
 
 router.get('/readAllRooms', roomController.readAllRooms)
 
-router.post('/addRoom', auth, upload.any() ,roomController.addRoom)
+router.post('/addRoom', auth, upload.array('img', 5) ,roomController.addRoom)
 
 router.delete('/deleteRoom', auth, roomController.deleteRoom)
 
